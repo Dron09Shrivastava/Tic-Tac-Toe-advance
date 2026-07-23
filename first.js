@@ -1,3 +1,7 @@
+let timerText = document.querySelector("#timer");
+let timeLeft = 30;
+let timer;
+
 const themeBtn = document.querySelector("#theme-btn");
 
 themeBtn.addEventListener("click",()=>{
@@ -56,6 +60,8 @@ const winpatterns = [
 [2,4,6],
 ];
 
+
+
 function launchConfetti(){
 
     for(let i=0;i<80;i++){
@@ -88,6 +94,34 @@ const updateTurn = ()=>{
     turno ? "Player O's Turn" : "Player X's Turn";
 };
 
+function startTimer(){
+
+    clearInterval(timer);
+
+    timeLeft = 30;
+
+    timerText.innerText = timeLeft;
+
+    timer = setInterval(()=>{
+
+        timeLeft--;
+
+        timerText.innerText = timeLeft;
+
+        if(timeLeft <= 0){
+
+            clearInterval(timer);
+
+            disableBoxes();
+
+            msg.innerText = "⏰ Time's Up! Click Play Again";
+
+            msgcontainer.classList.remove("hide");
+        }
+
+    },1000);
+}
+
 const resetGame = ()=>{
     turno = true;
     moves = 0;
@@ -99,6 +133,9 @@ const resetGame = ()=>{
     msgcontainer.classList.add("hide");
 
     updateTurn();
+
+    clearInterval(timer);
+    startTimer();
 };
 
 boxes.forEach((box)=>{
@@ -241,3 +278,4 @@ newGameBtn.addEventListener("click",resetGame);
 resetbtn.addEventListener("click",resetGame);
 
 updateTurn();
+startTimer();
