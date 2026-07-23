@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+
+    <div class="msg-container hide">
+        <div class="winner-card">
+            <h2 id="msg">Winner</h2>
+            <button id="new-game">Play Again</button>
+        </div>
+    </div>
+
+    <main>
+
+        <h1>🎮 Tic Tac Toe</h1>
+
+        <div class="theme-container">
+            <button id="theme-btn">🌙 Dark Mode</button>
+        </div>
+
+        <div id="confetti-container"></div>
+        
+        <div class="dashboard">
+
+            <div class="glass-card">
+                <h3>Scoreboard</h3>
+
+                <div class="score-row">
+                    <span>❌ X</span>
+                    <span id="x-score">0</span>
+                </div>
+
+                <div class="score-row">
+                    <span>⭕ O</span>
+                    <span id="o-score">0</span>
+                </div>
+
+                <div class="score-row">
+                    <span>🤝 Draw</span>
+                    <span id="draw-score">0</span>
+                </div>
+            </div>
+
+            <div class="game-section">
+
+                <div class="turn-card">
+                    <span id="turn-text">Player O's Turn</span>
+                </div>
+
+                <div class="container">
+                    <div class="game">
+
+                        <button class="box"></button>
+                        <button class="box"></button>
+                        <button class="box"></button>
+
+                        <button class="box"></button>
+                        <button class="box"></button>
+                        <button class="box"></button>
+
+                        <button class="box"></button>
+                        <button class="box"></button>
+                        <button class="box"></button>
+
+                    </div>
+                </div>
+
+                <button id="reset">Reset Game</button>
+
+            </div>
+
+            <div class="glass-card">
+                <h3>Game Stats</h3>
+
+                <div class="score-row">
+                    <span>Moves</span>
+                    <span id="moves">0</span>
+                </div>
+
+                <div class="score-row">
+                    <span>Total Games</span>
+                    <span id="games">0</span>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="first.js"></script>
+
+</body>
+</html>

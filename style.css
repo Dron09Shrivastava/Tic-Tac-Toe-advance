@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #dbeafe,
+        #e0e7ff,
+        #f5d0fe
+    );
+    overflow-x:hidden;
+}
+
+main{
+    width:100%;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#1e293b;
+}
+
+.dashboard{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.glass-card{
+    width:250px;
+    padding:25px;
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.25);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.4);
+
+    box-shadow:
+    0 8px 32px rgba(31,38,135,0.15);
+}
+
+.glass-card h3{
+    text-align:center;
+    margin-bottom:20px;
+    color:#334155;
+}
+
+.score-row{
+    display:flex;
+    justify-content:space-between;
+    margin:15px 0;
+    font-weight:600;
+}
+
+.game-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.turn-card{
+    padding:12px 25px;
+    margin-bottom:20px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.4);
+
+    backdrop-filter:blur(15px);
+
+    font-weight:600;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.game{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.box{
+    width:120px;
+    height:120px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.45);
+
+    backdrop-filter:blur(20px);
+
+    font-size:3rem;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
+}
+
+.box:hover:not(:disabled){
+    transform:translateY(-5px);
+}
+
+.box:disabled{
+    cursor:not-allowed;
+}
+
+#reset,
+#new-game{
+    margin-top:20px;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:15px;
+
+    background:#6366f1;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#reset:hover,
+#new-game:hover{
+    transform:scale(1.05);
+}
+
+.msg-container{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,0.4);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:100;
+}
+
+.winner-card{
+    background:white;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.hide{
+    display:none;
+}
+
+.bg-shape{
+    position:fixed;
+    border-radius:50%;
+    z-index:-1;
+}
+
+.shape1{
+    width:300px;
+    height:300px;
+
+    background:#bfdbfe;
+
+    top:-80px;
+    left:-80px;
+}
+
+.shape2{
+    width:350px;
+    height:350px;
+
+    background:#fbcfe8;
+
+    bottom:-120px;
+    right:-120px;
+}
+
+@media(max-width:900px){
+
+    .dashboard{
+        flex-direction:column;
+    }
+
+    .glass-card{
+        width:90%;
+        max-width:400px;
+    }
+
+    .box{
+        width:90px;
+        height:90px;
+    }
+}
+/* Dark Theme */
+
+body.dark{
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #312e81
+    );
+}
+
+body.dark h1{
+    color:white;
+}
+
+body.dark .glass-card,
+body.dark .turn-card,
+body.dark .box{
+    background:rgba(255,255,255,0.08);
+    color:white;
+}
+
+body.dark .winner-card{
+    background:#1e293b;
+    color:white;
+}
+
+/* Theme Button */
+
+.theme-container{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+#theme-btn{
+    border:none;
+    padding:12px 25px;
+    border-radius:15px;
+    cursor:pointer;
+
+    background:#6366f1;
+    color:white;
+
+    font-weight:600;
+}
+
+/* Winning Glow */
+
+.winner-box{
+    animation:winnerGlow 1s infinite alternate;
+}
+
+@keyframes winnerGlow{
+
+    from{
+        box-shadow:0 0 10px #60a5fa;
+    }
+
+    to{
+        box-shadow:
+        0 0 30px #60a5fa,
+        0 0 50px #60a5fa;
+    }
+}
+
+/* Confetti */
+
+.confetti{
+    position:fixed;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+
+    from{
+        transform:translateY(-50px);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+}
