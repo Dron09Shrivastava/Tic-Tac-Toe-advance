@@ -1,3 +1,4 @@
+// Select the timer element
 let timerText = document.querySelector("#timer");
 let timeLeft = 30;
 let timer;
@@ -16,7 +17,7 @@ themeBtn.addEventListener("click",()=>{
     }
 });
 
-
+// Select sound Button element
 const clickSound = new Audio("./sound/click.mp3");
 const winSound = new Audio("./sound/win.mp3");
 
@@ -49,6 +50,7 @@ let oScore = 0;
 let drawScore = 0;
 let totalGames = 0;
 
+// Winning pattern of the game
 const winpatterns = [
 [0,1,2],
 [3,4,5],
@@ -60,7 +62,7 @@ const winpatterns = [
 [2,4,6],
 ];
 
-
+// Function to launch confetti animation 
 
 function launchConfetti(){
 
@@ -89,11 +91,13 @@ function launchConfetti(){
     }
 }
 
+// Function to update the turn text
 const updateTurn = ()=>{
     turnText.innerText =
     turno ? "Player O's Turn" : "Player X's Turn";
 };
 
+// Function to start timer countdown
 function startTimer(){
 
     clearInterval(timer);
@@ -122,6 +126,8 @@ function startTimer(){
     },1000);
 }
 
+// Function to reset the game
+
 const resetGame = ()=>{
     turno = true;
     moves = 0;
@@ -138,6 +144,7 @@ const resetGame = ()=>{
     startTimer();
 };
 
+// Add click event listner to each box
 boxes.forEach((box)=>{
 
     box.addEventListener("click",()=>{
@@ -171,12 +178,14 @@ boxes.forEach((box)=>{
     });
 });
 
+// Function to diable all boxes
 const disableBoxes = ()=>{
     boxes.forEach((box)=>{
         box.disabled = true;
     });
 };
 
+// Function to enable all boxes
 const enableBoxes = ()=>{
 
     boxes.forEach((box)=>{
@@ -189,6 +198,7 @@ const enableBoxes = ()=>{
     });
 };
 
+// Function to show winner and update score
 const showWinner = (winner)=>{
 
     winSound.currentTime = 0;
@@ -215,11 +225,11 @@ const showWinner = (winner)=>{
 
     disableBoxes();
 };
-
+// Function to check if the game is a draw
 const checkDraw = ()=>{
 
     let filled = 0;
-
+    //check if all boexes are filled and no winner
     boxes.forEach((box)=>{
         if(box.innerText !== ""){
             filled++;
@@ -241,7 +251,7 @@ const checkDraw = ()=>{
         disableBoxes();
     }
 };
-
+// Function to check if there is a winner
 const checkWinner = ()=>{
 
     for(let pattern of winpatterns){

@@ -11,9 +11,9 @@ body{
     min-height:100vh;
     background:linear-gradient(
         135deg,
-        #dbeafe,
-        #e0e7ff,
-        #f5d0fe
+        #11e92e,
+        #199463b7,
+        #035857
     );
     overflow-x:hidden;
 }
@@ -149,29 +149,55 @@ h1{
     transform:scale(1.05);
 }
 
-.msg-container{
-    position:fixed;
-    inset:0;
+.msg-container {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 
-    background:rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    z-index:100;
+    z-index: 999;
 }
 
-.winner-card{
-    background:white;
+/* Winner Card */
+.winner-card {
+    width: 460px;
+    max-width: 90%;
+    min-height: 220px;
 
-    padding:40px;
+    padding: 35px 30px;
 
-    border-radius:25px;
+    border-radius: 28px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
 
-    text-align:center;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
-    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.35),
+        0 0 15px rgba(0,255,255,0.4),
+        0 0 35px rgba(0,255,255,0.2);
+
+    animation: popup 0.45s ease;
+}
+/* Winner Text */
+#msg {
+    font-size: 2.2rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
 }
 
 .hide{
@@ -188,7 +214,7 @@ h1{
     width:300px;
     height:300px;
 
-    background:#bfdbfe;
+    background:#a5e306;
 
     top:-80px;
     left:-80px;
@@ -198,7 +224,7 @@ h1{
     width:350px;
     height:350px;
 
-    background:#fbcfe8;
+    background:#cffbf6;
 
     bottom:-120px;
     right:-120px;
@@ -225,14 +251,14 @@ h1{
 body.dark{
     background:linear-gradient(
         135deg,
-        #0f172a,
-        #1e293b,
-        #312e81
+        #1f25a7,
+        #141739,
+        #000000
     );
 }
 
 body.dark h1{
-    color:white;
+    color:rgb(241, 240, 244);
 }
 
 body.dark .glass-card,
@@ -242,10 +268,38 @@ body.dark .box{
     color:white;
 }
 
+body.dark .glass-card h3{
+    color:rgb(45, 92, 221);
+}
+
 body.dark .winner-card{
     background:#1e293b;
     color:white;
 }
+
+body.dark .shape1{
+    background:#0a47aa;
+    border: 2px solid rgb(6, 92, 116);
+
+    box-shadow:
+        0 0 10px rgb(3, 4, 59),
+        0 0 20px rgb(42, 3, 150),
+        0 0 40px rgb(36, 82, 161),
+        0 0 80px rgba(208, 218, 218, 0.7);
+}
+
+body.dark .shape2{
+    background:#1e293b;
+    border: 2px solid rgb(6, 92, 116);
+
+    box-shadow:
+        0 0 10px rgb(5, 123, 128),
+        0 0 20px rgb(8, 99, 104),
+        0 0 40px rgb(12, 61, 120),
+        0 0 80px rgba(7, 152, 152, 0.7);
+}
+
+
 
 /* Theme Button */
 
