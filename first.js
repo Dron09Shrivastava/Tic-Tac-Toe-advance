@@ -1,3 +1,144 @@
+/* *****************
+ AI MODE 
+*******************/
+
+const gameMode = document.querySelector("#game-mode");
+
+let aiEnabled = false;
+
+gameMode.addEventListener("change",()=>{
+
+    aiEnabled = gameMode.value === "ai";
+
+    resetGame();
+
+});
+
+const difficulty = document.querySelector("#difficulty");
+
+let aiDifficulty = "easy";
+
+difficulty.addEventListener("change", () => {
+    aiDifficulty = difficulty.value;
+});
+
+function aiMove(){
+
+    if(!aiEnabled) return;
+
+    let empty = [];
+
+    boxes.forEach((box,index)=>{
+
+        if(box.innerText===""){
+            empty.push(index);
+        }
+
+    });
+
+    if(empty.length===0) return;
+
+    let move;
+
+    if(aiDifficulty==="easy"){
+
+        move = empty[Math.floor(Math.random()*empty.length)];
+
+    }
+
+    else if(aiDifficulty==="medium"){
+
+        move = findWinningMove("X");
+
+        if(move===null){
+            move = findWinningMove("O");
+        }
+
+        if(move===null){
+            move = empty[Math.floor(Math.random()*empty.length)];
+        }
+
+    }
+
+    else{
+
+        move = findWinningMove("X");
+
+        if(move===null){
+
+            move = findWinningMove("O");
+
+        }
+
+        if(move===null){
+
+            if(boxes[4].innerText===""){
+                move=4;
+            }
+
+        }
+
+        if(move===null){
+
+            let corners=[0,2,6,8];
+
+            let freeCorners=corners.filter(i=>boxes[i].innerText==="");
+
+            if(freeCorners.length>0){
+
+                move=freeCorners[
+                    Math.floor(Math.random()*freeCorners.length)
+                ];
+
+            }
+
+        }
+
+        if(move===null){
+
+            move=empty[Math.floor(Math.random()*empty.length)];
+
+        }
+
+    }
+
+    boxes[move].click();
+
+}
+function findWinningMove(player){
+
+    for(let pattern of winpatterns){
+
+        let a=pattern[0];
+        let b=pattern[1];
+        let c=pattern[2];
+
+        let values=[
+            boxes[a].innerText,
+            boxes[b].innerText,
+            boxes[c].innerText
+        ];
+
+        if(
+            values.filter(v=>v===player).length===2 &&
+            values.filter(v=>v==="").length===1
+        ){
+
+            if(boxes[a].innerText==="") return a;
+            if(boxes[b].innerText==="") return b;
+            if(boxes[c].innerText==="") return c;
+
+        }
+
+    }
+
+    return null;
+
+}
+/* *****************
+ AI MODE ENDS
+*******************/
+
 // Select the timer element
 let timerText = document.querySelector("#timer");
 let timeLeft = 30;
@@ -175,10 +316,18 @@ boxes.forEach((box)=>{
         updateTurn();
 
         checkWinner();
+        // Check if AI is enabled and it's AI's turn to move
+
+        if(aiEnabled && !turno && msgcontainer.classList.contains("hide")){
+
+            setTimeout(aiMove,500);
+
+        }
     });
 });
 
 // Function to diable all boxes
+
 const disableBoxes = ()=>{
     boxes.forEach((box)=>{
         box.disabled = true;
