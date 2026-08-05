@@ -549,3 +549,218 @@ body.dark .control-item select option{
     color:white;
 
 }
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width:1024px){
+
+    main{
+        padding:20px;
+    }
+
+    .dashboard{
+        gap:20px;
+    }
+
+    .glass-card{
+        width:220px;
+    }
+
+    .box{
+        width:100px;
+        height:100px;
+        font-size:2.7rem;
+    }
+
+    .winner-card{
+        width:420px;
+    }
+
+}
+
+/* ===========================
+   SMALL TABLET
+=========================== */
+
+@media (max-width:900px){
+
+    .dashboard{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .glass-card{
+
+        width:95%;
+        max-width:450px;
+
+    }
+
+    .game-section{
+
+        width:100%;
+
+    }
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    h1{
+
+        font-size:2rem;
+
+    }
+
+    .box{
+
+        width:85px;
+        height:85px;
+
+        font-size:2.2rem;
+
+        border-radius:18px;
+
+    }
+
+    .game{
+
+        gap:10px;
+
+    }
+
+    .glass-card{
+
+        padding:20px;
+
+    }
+
+    .turn-card{
+
+        width:100%;
+        text-align:center;
+
+    }
+
+    #reset,
+    #theme-btn,
+    #new-game{
+
+        width:100%;
+
+    }
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media (max-width:500px){
+
+    main{
+
+        padding:15px;
+
+    }
+
+    h1{
+
+        font-size:1.7rem;
+
+        margin-bottom:20px;
+
+    }
+
+    .box{
+
+        width:72px;
+        height:72px;
+
+        font-size:2rem;
+
+    }
+
+    .glass-card{
+
+        width:100%;
+
+        padding:18px;
+
+    }
+
+    .winner-card{
+
+        width:95%;
+
+        min-height:180px;
+
+        padding:25px;
+
+    }
+
+    #msg{
+
+        font-size:1.6rem;
+
+    }
+
+    .mode-panel{
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+    .mode-panel label{
+
+        min-width:auto;
+
+    }
+
+    .mode-panel select{
+
+        width:100%;
+
+    }
+
+}
+
+/* ===========================
+   EXTRA SMALL
+=========================== */
+
+@media (max-width:360px){
+
+    .box{
+
+        width:60px;
+        height:60px;
+
+        font-size:1.7rem;
+
+    }
+
+    .game{
+
+        gap:8px;
+
+    }
+
+    h1{
+
+        font-size:1.5rem;
+
+    }
+
+}
