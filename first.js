@@ -243,17 +243,13 @@ function startTimer(){
 
     clearInterval(timer);
 
-    timeLeft = 30;
-
-    timerText.innerText = timeLeft;
-
     timer = setInterval(()=>{
 
         timeLeft--;
 
         timerText.innerText = timeLeft;
 
-        if(timeLeft <= 0){
+        if(timeLeft <= 0 && msgcontainer.classList.contains("hide")){
 
             clearInterval(timer);
 
@@ -262,16 +258,22 @@ function startTimer(){
             msg.innerText = "⏰ Time's Up! Click Play Again";
 
             msgcontainer.classList.remove("hide");
+
         }
 
     },1000);
+
 }
 
 // Function to reset the game
 
 const resetGame = ()=>{
+
     turno = true;
     moves = 0;
+
+    timeLeft = 30;
+    timerText.innerText = timeLeft;
 
     moveText.innerText = moves;
 
@@ -282,7 +284,9 @@ const resetGame = ()=>{
     updateTurn();
 
     clearInterval(timer);
+
     startTimer();
+
 };
 
 // Add click event listner to each box
@@ -318,10 +322,14 @@ boxes.forEach((box)=>{
         checkWinner();
         // Check if AI is enabled and it's AI's turn to move
 
-        if(aiEnabled && !turno && msgcontainer.classList.contains("hide")){
+        if (aiEnabled &&!turno &&msgcontainer.classList.contains("hide")) {
+            setTimeout(() => {
 
-            setTimeout(aiMove,500);
+            if(msgcontainer.classList.contains("hide")){
+                aiMove();
+            }
 
+            },500);
         }
     });
 });
@@ -349,6 +357,8 @@ const enableBoxes = ()=>{
 
 // Function to show winner and update score
 const showWinner = (winner)=>{
+
+    clearInterval(timer);
 
     winSound.currentTime = 0;
     winSound.play().catch(err => console.log(err));
@@ -386,6 +396,8 @@ const checkDraw = ()=>{
     });
 
     if(filled === 9){
+
+        clearInterval(timer);
 
         totalGames++;
         drawScore++;
@@ -432,6 +444,26 @@ const checkWinner = ()=>{
 
     checkDraw();
 };
+
+document.addEventListener("visibilitychange",()=>{
+
+    if(document.hidden){
+
+        // Pause timer completely
+        clearInterval(timer);
+
+    }else{
+
+        // Resume timer from current value
+        if(msgcontainer.classList.contains("hide")){
+
+            startTimer();
+
+        }
+
+    }
+
+});
 
 newGameBtn.addEventListener("click",resetGame);
 resetbtn.addEventListener("click",resetGame);

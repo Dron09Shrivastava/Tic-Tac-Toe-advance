@@ -216,6 +216,12 @@ h1{
 
     background:#a5e306;
 
+    box-shadow:
+        0 0 10px rgb(21, 184, 130),
+        0 0 20px rgb(6, 61, 37),
+        0 0 40px rgb(2, 66, 39),
+        0 0 80px rgba(1, 26, 26, 0.7);
+
     top:-80px;
     left:-80px;
 }
@@ -225,6 +231,12 @@ h1{
     height:350px;
 
     background:#cffbf6;
+
+    box-shadow:
+        0 0 10px rgb(21, 184, 130),
+        0 0 20px rgb(6, 61, 37),
+        0 0 40px rgb(2, 66, 39),
+        0 0 80px rgba(1, 26, 26, 0.7);
 
     bottom:-120px;
     right:-120px;
@@ -283,9 +295,9 @@ body.dark .shape1{
 
     box-shadow:
         0 0 10px rgb(3, 4, 59),
-        0 0 20px rgb(42, 3, 150),
-        0 0 40px rgb(36, 82, 161),
-        0 0 80px rgba(208, 218, 218, 0.7);
+        0 0 20px rgb(12, 2, 37),
+        0 0 40px rgb(2, 13, 33),
+        0 0 80px rgba(1, 26, 26, 0.7);
 }
 
 body.dark .shape2{
@@ -366,33 +378,174 @@ body.dark .shape2{
     }
 }
 
-.mode-panel{
+/* ===========================
+      CONTROL PANEL
+=========================== */
+
+.control-panel{
     display:flex;
     justify-content:center;
-    align-items:center;
-    gap:12px;
-    margin-bottom:18px;
+    margin-bottom:30px;
 }
 
-.mode-panel label{
+.control-card{
+
+    width:420px;
+
+    padding:22px 28px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.25);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.control-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.control-item label{
+
+    font-size:16px;
+
     font-weight:600;
+
     color:#1e293b;
 }
 
-.mode-panel select{
-    padding:10px 18px;
-    border:none;
-    border-radius:12px;
+.control-item select{
+
+    width:190px;
+    padding:13px 18px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,0.5);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,0.75),
+        rgba(255,255,255,0.35)
+    );
+
+    backdrop-filter:blur(15px);
+
+    color:#1e293b;
+
     font-size:15px;
-    background:white;
+    font-weight:600;
+
     cursor:pointer;
+
+    outline:none;
+
+    appearance:none;
+
+    background-image:
+    linear-gradient(45deg, transparent 50%, #6366f1 50%),
+    linear-gradient(135deg, #6366f1 50%, transparent 50%);
+
+    background-position:
+    calc(100% - 20px) 50%,
+    calc(100% - 14px) 50%;
+
+    background-size:
+    6px 6px,
+    6px 6px;
+
+    background-repeat:no-repeat;
+
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.12),
+        inset 0 1px 10px rgba(255,255,255,0.4);
+
+
+    transition:.35s ease;
 }
 
-body.dark .mode-panel label{
+.control-item select:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(99,102,241,0.25);
+
+}
+
+
+.control-item select:focus{
+
+    border-color:#6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99,102,241,0.2),
+        0 10px 25px rgba(99,102,241,0.25);
+
+}
+
+/* Dropdown Options */
+
+.control-item select option{
+
+    background:white;
+
+    color:#1e293b;
+
+    font-weight:600;
+
+    padding:15px;
+
+}
+
+body.dark .control-card{
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+body.dark .control-item label{
+
     color:white;
 }
 
-body.dark .mode-panel select{
-    background:#243244;
+/* Dark Mode */
+
+body.dark .control-item select{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(30,41,59,0.9),
+        rgba(15,23,42,0.9)
+    );
+
     color:white;
+
+    border:1px solid rgba(255,255,255,0.15);
+
+}
+body.dark .control-item select option{
+
+    background:#1e293b;
+
+    color:white;
+
 }

@@ -26,33 +26,40 @@
             <button id="theme-btn">🌙 Dark Mode</button>
         </div>
 
-        <div class="mode-panel">
+        <div class="control-panel">
 
-            <label>Game Mode</label>
+            <div class="control-card">
 
-            <select id="game-mode">
-                <option value="pvp">Player vs Player</option>
-                <option value="ai">Player vs AI</option>
-            </select>
-        </div>
+                <div class="control-item">
 
-        <div class="mode-panel">
+                    <label>
+                        🎮 Game Mode
+                    </label>
 
-            <label>Difficulty</label>
+                    <select id="game-mode">
+                        <option value="pvp">Player vs Player</option>
+                        <option value="ai">Player vs AI</option>
+                    </select>
 
-            <select id="difficulty">
+                </div>
 
-                <option value="easy">Easy</option>
+                <div class="control-item">
 
-                <option value="medium">Medium</option>
+                    <label>
+                        🤖 AI Difficulty
+                    </label>
 
-                <option value="hard">Hard</option>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
 
-            </select>
-
-            
+                </div>
 
             </div>
+
+        </div>
 
 
         <div id="confetti-container"></div>
